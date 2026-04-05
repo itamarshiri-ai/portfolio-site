@@ -9,18 +9,18 @@
 body{margin:0;background:#000;color:#fff;font-family:Inter, sans-serif;overflow-x:hidden}
 .section{height:100vh;position:relative}
 video,iframe{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border:0}
-.overlay{position:absolute;top:34px;left:34px;z-index:3;display:flex;flex-direction:column;gap:12px;max-width:calc(100vw - 68px);animation:fadeIn 1.6s ease both}
-.name{font-family:"Inter", sans-serif;font-size:40px;letter-spacing:.12em;line-height:.96;font-weight:600;opacity:.98;text-shadow:0 10px 34px rgba(0,0,0,.34)}
-.title{font-family:"Inter",sans-serif;font-size:11px;opacity:.72;letter-spacing:.22em;text-transform:uppercase}
+.overlay{position:absolute;top:34px;left:34px;z-index:3;display:flex;flex-direction:column;gap:14px;max-width:calc(100vw - 68px);animation:fadeIn 2.2s ease both}
+.name{font-family:"Inter",sans-serif;font-size:46px;letter-spacing:.045em;line-height:.94;font-weight:700;opacity:.985;text-shadow:0 10px 34px rgba(0,0,0,.34)}
+.title{font-family:"Inter",sans-serif;font-size:11px;opacity:.72;letter-spacing:.24em;text-transform:uppercase}
 .section-title{position:absolute;bottom:34px;left:34px;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.26em;opacity:.8;text-transform:uppercase;z-index:2;text-shadow:0 6px 20px rgba(0,0,0,.35);animation:fadeInUp 1.8s ease both}
-.contact-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:2px}
-.contact-link{display:inline-flex;align-items:center;padding:0;border:0;background:none;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.78;position:relative;transition:opacity .25s ease,transform .25s ease}
-.contact-link:after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:1px;background:rgba(255,255,255,.45);transform:scaleX(.35);transform-origin:left center;transition:transform .28s ease,background .28s ease}
+.contact-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:0}
+.contact-link{display:inline-flex;align-items:center;padding:0;border:0;background:none;font-family:"Inter",sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;opacity:.82;position:relative;transition:opacity .25s ease,transform .25s ease;color:rgba(255,255,255,.9)}
+.contact-link:after{content:"";position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:rgba(255,255,255,.34);transform:scaleX(.22);transform-origin:left center;transition:transform .28s ease,background .28s ease}
 .contact-link:hover{opacity:1;transform:translateY(-1px)}
 .contact-link:hover:after{transform:scaleX(1);background:rgba(255,255,255,.8)}
 .section::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.26) 0%, rgba(0,0,0,.08) 28%, rgba(0,0,0,.12) 66%, rgba(0,0,0,.34) 100%);pointer-events:none;z-index:1}
 .section iframe{animation:heroFade 1.8s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{0%{opacity:0;transform:translateY(18px)}55%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:translateY(0)}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(18px)}to{opacity:.8;transform:translateY(0)}}
 @keyframes heroFade{from{opacity:0;filter:blur(8px);transform:scale(1.02)}to{opacity:1;filter:blur(0);transform:scale(1)}}
 </style>
@@ -33,8 +33,8 @@ video,iframe{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:co
 <div class="name">ITAMAR LIDER SHIRI</div>
 <div class="title">Director · Creative · Art Direction</div>
 <div class="contact-links">
-<a class="contact-link" href="mailto:itamarshiri@gmail.com">Mail</a>
-<a class="contact-link" href="https://www.instagram.com/itamarlidershiri/" target="_blank" rel="noreferrer">Instagram</a>
+<a class="contact-link" href="mailto:itamarshiri@gmail.com">Mail —</a>
+<a class="contact-link" href="https://www.instagram.com/itamarlidershiri/" target="_blank" rel="noreferrer">Instagram —</a>
 </div>
 </div>
 <iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&showinfo=0" allow="autoplay"></iframe>
