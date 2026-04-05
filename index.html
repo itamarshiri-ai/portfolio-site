@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Itamar Lider Shiri</title>
+    <meta
+      name="description"
+      content="Director · Concept · Creative · Art Direction"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #060606;
+        --panel: #101010;
+        --panel-2: rgba(255, 255, 255, 0.04);
+        --text: #f2f2ef;
+        --muted: rgba(242, 242, 239, 0.68);
+        --soft: rgba(242, 242, 239, 0.42);
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: rgba(255, 255, 255, 0.9);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: radial-gradient(circle at top, #111111 0%, var(--bg) 38%);
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(16px);
+        background: rgba(6, 6, 6, 0.75);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 72px;
+      }
+
+      .brand {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .brand-kicker,
+      .section-kicker {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        color: var(--soft);
+      }
+
+      .brand-name {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .nav {
+        display: flex;
+        gap: 24px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .nav a:hover {
+        color: var(--text);
+      }
+
+      .hero {
+        padding: 88px 0 56px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: end;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(52px, 10vw, 112px);
+        line-height: 0.95;
+        letter-spacing: -0.06em;
+        max-width: 9ch;
+      }
+
+      .hero-copy {
+        margin-top: 24px;
+        max-width: 620px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.7;
+      }
+
+      .hero-meta {
+        margin-top: 22px;
+        font-size: 13px;
+        color: var(--soft);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero-card {
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+        min-height: 540px;
+        display: flex;
+      }
+
+      .hero-card iframe {
+        width: 100%;
+        min-height: 540px;
+        border: 0;
+      }
+
+      .section {
+        padding: 34px 0 64px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 22px;
+      }
+
+      .section-title {
+        margin: 10px 0 0;
+        font-size: clamp(28px, 5vw, 56px);
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      .section-note {
+        max-width: 420px;
+        color: var(--soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 18px;
+      }
+
+      .project {
+        grid-column: span 6;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        overflow: hidden;
+        background: var(--panel-2);
+        transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+      }
+
+      .project:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .project-media {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        display: block;
+        background: #000;
+      }
+
+      .project-body {
+        padding: 20px 20px 22px;
+      }
+
+      .project-title-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .project-title {
+        margin: 0;
+        font-size: 26px;
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+      }
+
+      .project-type {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: var(--soft);
+        white-space: nowrap;
+      }
+
+      .project-credit {
+        margin-top: 10px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--soft);
+      }
+
+      .project-description {
+        margin: 16px 0 0;
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--muted);
+        max-width: 50ch;
+      }
+
+      .project-awards {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 16px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .about {
+        margin-top: 24px;
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--panel-2);
+        padding: 30px;
+      }
+
+      .about p {
+        margin: 0;
+        max-width: 760px;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 16px;
+      }
+
+      .footer {
+        padding: 56px 0 72px;
+      }
+
+      .footer-card {
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        background: var(--panel-2);
+        padding: 32px;
+      }
+
+      .footer-title {
+        margin: 0;
+        font-size: clamp(30px, 5vw, 54px);
+        line-height: 1;
+        letter-spacing: -0.05em;
+      }
+
+      .footer-copy {
+        margin-top: 14px;
+        max-width: 540px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        color: var(--text);
+        background: transparent;
+        transition: background 0.25s ease, transform 0.25s ease;
+      }
+
+      .chip:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-card,
+        .hero-card iframe {
+          min-height: 360px;
+        }
+
+        .project {
+          grid-column: span 12;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 56px;
+        }
+
+        .hero-copy {
+          font-size: 16px;
+        }
+
+        .section-head {
+          flex-direction: column;
+          align-items: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <div class="brand-kicker">Portfolio</div>
+          <div class="brand-name">Itamar Lider Shiri</div>
+        </div>
+        <nav class="nav">
+          <a href="#commercial">Work</a>
+          <a href="#music">Music</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="section-kicker">Director · Concept · Creative · Art Direction</div>
+            <h1>Itamar Lider Shiri</h1>
+            <div class="hero-copy">
+              Commercials, music videos, and concept-led films built with precision, style, and control.
+            </div>
+            <div class="hero-meta">Award-winning director</div>
+          </div>
+          <div class="hero-card">
+            <iframe
+              src="https://www.youtube.com/embed/CcpYvKZ5j7s?rel=0"
+              title="SEXIT — Eden Golan"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="commercial">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Selected Work</div>
+              <h2 class="section-title">Commercial</h2>
+            </div>
+            <div class="section-note">Brand-led work with a clear visual language, precise execution, and concept at the center.</div>
+          </div>
+          <div class="grid">
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/1104863532" title="Zeta — Campaign" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Zeta — Campaign</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A precise idea, executed with clarity and control.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/1099614957" title="Nestlé Crunch — Campaign" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Nestlé Crunch — Campaign</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A refined visual built on precision, control, and restraint.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/1085404023" title="Pelephone — Campaign" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Pelephone — Campaign</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A clear idea, pushed with precision and control.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/1052975419" title="PayBox — Campaign" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">PayBox — Campaign</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A sharp idea, delivered with clarity and precision.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/963125446" title="Osem — Mana Hama" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Osem — Mana Hama</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A refined visual built on control and clarity.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/1068760858" title="Tami 4 — Campaign" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Tami 4 — Campaign</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A simple idea executed with precision and control.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://www.youtube.com/embed/jsb-NIul4rI?rel=0" title="Ariel Lenor — Commercial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Ariel Lenor — Commercial</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A familiar moment, sharpened into a precise idea.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://player.vimeo.com/video/930153765" title="American Express — Campaign" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">American Express — Campaign</h3><div class="project-type">Commercial</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">Simple. Direct. Effective.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="music">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Music / Talent</div>
+              <h2 class="section-title">Music Videos</h2>
+            </div>
+            <div class="section-note">Performance-led work built around image, rhythm, identity, and presence.</div>
+          </div>
+          <div class="grid">
+            <article class="project">
+              <iframe class="project-media" src="https://www.youtube.com/embed/CcpYvKZ5j7s?rel=0" title="SEXIT — Eden Golan" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">SEXIT — Eden Golan</h3><div class="project-type">Music Video</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A performance built on control, tension, and presence.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://www.youtube.com/embed/bcuRKDY0Rz0?rel=0" title="Mi Zot — Anna Zak" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Mi Zot — Anna Zak</h3><div class="project-type">Music Video</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">Built around identity, presence, and control.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://www.youtube.com/embed/z7jvfjqtd90?rel=0" title="Allstar — Anna Zak x Itay Galo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Allstar — Anna Zak x Itay Galo</h3><div class="project-type">Music Video</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A fashion-driven piece built on rhythm, attitude, and style.</p>
+              </div>
+            </article>
+
+            <article class="project">
+              <iframe class="project-media" src="https://www.youtube.com/embed/LtY23Aq1mTI?rel=0" title="Go To Sleep — Anna Zak" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Go To Sleep — Anna Zak</h3><div class="project-type">Music Video</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A stylized world where performance turns into parody.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="human">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Human / Story</div>
+              <h2 class="section-title">Selected Storytelling</h2>
+            </div>
+            <div class="section-note">Work driven by care, connection, and human presence.</div>
+          </div>
+          <div class="grid">
+            <article class="project" style="grid-column: span 12;">
+              <iframe class="project-media" src="https://www.youtube.com/embed/wm9Gg1y5vhM?rel=0" title="Pantene — Zichron Menahem" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Pantene — Zichron Menahem</h3><div class="project-type">Story / Campaign</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A story built on care, connection, and human presence.</p>
+                <div class="project-awards">
+                  <div>Winner — Golden Cactus 2025</div>
+                  <div>Official Selection — Cannes Lions 2026</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="film">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Film / Concept</div>
+              <h2 class="section-title">Film</h2>
+            </div>
+            <div class="section-note">Atmosphere-led work built on tone, rhythm, and restraint.</div>
+          </div>
+          <div class="grid">
+            <article class="project" style="grid-column: span 12;">
+              <iframe class="project-media" src="https://player.vimeo.com/video/1129099945" title="Gravite — Film" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+              <div class="project-body">
+                <div class="project-title-row"><h3 class="project-title">Gravite — Film</h3><div class="project-type">Film</div></div>
+                <div class="project-credit">Director · Concept · Creative · Art Direction</div>
+                <p class="project-description">A controlled world built on mood, rhythm, and intention.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">About</div>
+              <h2 class="section-title">Minimal words. Maximum image.</h2>
+            </div>
+          </div>
+          <div class="about">
+            <p>
+              A portfolio built around commercials first, then music, story, and film — designed to let the work lead.
+              The visual language stays minimal, dark, and precise so every frame carries the weight.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-card">
+          <h2 class="footer-title">Let’s make something unforgettable.</h2>
+          <div class="footer-copy">Add your email, Instagram, or representation details here before publishing.</div>
+          <div class="footer-links">
+            <a class="chip" href="mailto:hello@example.com">hello@example.com</a>
+            <a class="chip" href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+            <a class="chip" href="#commercial">View Work</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
