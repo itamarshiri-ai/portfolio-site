@@ -8,24 +8,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0b0b0b;
-}
-
 body{
   margin:0;
-  background:var(--bg);
+  background:#0b0b0b;
   color:white;
   font-family:Inter,sans-serif;
   overflow-x:hidden;
   scroll-snap-type:y mandatory;
 }
 
-/* ===== DESKTOP ===== */
-
-.desktop{
-  display:block;
-}
+/* DESKTOP */
 
 .section{
   height:100vh;
@@ -39,8 +31,6 @@ body{
   width:100%;
   height:100%;
   border:0;
-  top:0;
-  left:0;
 }
 
 .overlay{
@@ -57,7 +47,7 @@ body{
 
 .title{
   font-size:11px;
-  letter-spacing:0.2em;
+  letter-spacing:.2em;
   opacity:.7;
 }
 
@@ -66,7 +56,7 @@ body{
   bottom:40px;
   left:40px;
   font-size:11px;
-  letter-spacing:0.25em;
+  letter-spacing:.25em;
   opacity:.7;
   z-index:2;
 }
@@ -81,26 +71,20 @@ body{
   background:rgba(0,0,0,0.4);
   backdrop-filter:blur(10px);
   font-size:11px;
-  letter-spacing:0.15em;
+  letter-spacing:.15em;
   cursor:pointer;
   z-index:10;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 
-.mobile{
-  display:none;
-}
+.mobile{display:none;}
 
-@media (max-width:768px){
+@media(max-width:768px){
 
-  body{
-    scroll-snap-type:none;
-  }
+  body{scroll-snap-type:none;}
 
-  .desktop{
-    display:none;
-  }
+  .section{display:none;}
 
   .mobile{
     display:block;
@@ -114,17 +98,14 @@ body{
 
   .mobile-title{
     font-size:10px;
-    letter-spacing:0.15em;
+    letter-spacing:.15em;
     opacity:.7;
     margin-bottom:30px;
   }
 
-  .card{
-    margin-bottom:28px;
-  }
+  .card{margin-bottom:28px;}
 
   .thumb{
-    width:100%;
     aspect-ratio:16/9;
     border-radius:18px;
     overflow:hidden;
@@ -139,8 +120,7 @@ body{
   .card-title{
     margin-top:10px;
     font-size:11px;
-    letter-spacing:0.2em;
-    opacity:.85;
+    letter-spacing:.2em;
   }
 }
 </style>
@@ -148,10 +128,7 @@ body{
 
 <body>
 
-<!-- SOUND -->
 <button class="sound-toggle" id="soundToggle">Enable sound</button>
-
-<div class="desktop">
 
 <!-- HERO -->
 <section class="section" data-platform="youtube">
@@ -159,139 +136,118 @@ body{
     <div class="name">ITAMAR LIDER SHIRI</div>
     <div class="title">Director · Creative · Art Direction</div>
   </div>
-
-  <iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&modestbranding=1&showinfo=0&rel=0&enablejsapi=1"></iframe>
+  <iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&enablejsapi=1"></iframe>
   <div class="section-title">SEXIT — Eden Golan</div>
 </section>
 
-<!-- ZETA -->
 <section class="section" data-platform="vimeo">
-  <iframe src="https://player.vimeo.com/video/1104863532?autoplay=1&muted=1&loop=1&background=1"></iframe>
-  <div class="section-title">Zeta — Commercial</div>
+<iframe src="https://player.vimeo.com/video/1104863532?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Zeta</div>
 </section>
 
-<!-- PELEPHONE -->
 <section class="section" data-platform="vimeo">
-  <iframe src="https://player.vimeo.com/video/1085404023?autoplay=1&muted=1&loop=1&background=1"></iframe>
-  <div class="section-title">Pelephone</div>
+<iframe src="https://player.vimeo.com/video/1085404023?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Pelephone</div>
 </section>
 
-<!-- NESTLE -->
 <section class="section" data-platform="vimeo">
-  <iframe src="https://player.vimeo.com/video/1099614957?autoplay=1&muted=1&loop=1&background=1"></iframe>
-  <div class="section-title">Nestlé Crunch</div>
+<iframe src="https://player.vimeo.com/video/1099614957?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Nestlé Crunch</div>
 </section>
 
-<!-- PAYBOX -->
 <section class="section" data-platform="vimeo">
-  <iframe src="https://player.vimeo.com/video/1052975419?autoplay=1&muted=1&loop=1&background=1"></iframe>
-  <div class="section-title">PayBox</div>
+<iframe src="https://player.vimeo.com/video/1052975419?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">PayBox</div>
 </section>
 
-<!-- TAMI -->
-<section class="section" data-platform="vimeo">
-  <iframe src="https://player.vimeo.com/video/1068760858?autoplay=1&muted=1&loop=1&background=1"></iframe>
-  <div class="section-title">Tami 4</div>
-</section>
-
-<!-- AMEX -->
-<section class="section" data-platform="vimeo">
-  <iframe src="https://player.vimeo.com/video/930153765?autoplay=1&muted=1&loop=1&background=1"></iframe>
-  <div class="section-title">American Express</div>
-</section>
-
-<!-- ANNA ZAK -->
 <section class="section" data-platform="youtube">
-  <iframe src="https://www.youtube.com/embed/bcuRKDY0Rz0?autoplay=1&mute=1&loop=1&playlist=bcuRKDY0Rz0&controls=0&modestbranding=1&showinfo=0&rel=0&enablejsapi=1"></iframe>
-  <div class="section-title">Anna Zak</div>
+<iframe src="https://www.youtube.com/embed/wm9Gg1y5vhM?autoplay=1&mute=1&loop=1&playlist=wm9Gg1y5vhM&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Pantene</div>
 </section>
 
-</div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/930153765?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">American Express</div>
+</section>
+
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1068760858?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Tami 4</div>
+</section>
+
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/963125446?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Osem — Mana Hama</div>
+</section>
+
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/jsb-NIul4rI?autoplay=1&mute=1&loop=1&playlist=jsb-NIul4rI&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Ariel Lenor</div>
+</section>
+
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/bcuRKDY0Rz0?autoplay=1&mute=1&loop=1&playlist=bcuRKDY0Rz0&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Anna Zak</div>
+</section>
+
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/z7jvfjqtd90?autoplay=1&mute=1&loop=1&playlist=z7jvfjqtd90&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Allstar — Anna Zak</div>
+</section>
+
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/LtY23Aq1mTI?autoplay=1&mute=1&loop=1&playlist=LtY23Aq1mTI&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Go To Sleep</div>
+</section>
+
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1129099945?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Gravite</div>
+</section>
 
 <!-- MOBILE -->
-
 <div class="mobile">
-
 <div class="mobile-name">ITAMAR LIDER SHIRI</div>
 <div class="mobile-title">Director · Creative · Art Direction</div>
 
-<div class="card">
-<a href="https://www.youtube.com/watch?v=CcpYvKZ5j7s" target="_blank">
-<div class="thumb"><img src="https://img.youtube.com/vi/CcpYvKZ5j7s/maxresdefault.jpg"></div>
-<div class="card-title">SEXIT — Eden Golan</div>
-</a>
-</div>
-
-<div class="card">
-<a href="https://vimeo.com/1104863532" target="_blank">
-<div class="thumb"><img src="https://vumbnail.com/1104863532.jpg"></div>
-<div class="card-title">Zeta — Commercial</div>
-</a>
-</div>
-
-<div class="card">
-<a href="https://vimeo.com/1068760858" target="_blank">
-<div class="thumb"><img src="https://vumbnail.com/1068760858.jpg"></div>
-<div class="card-title">Tami 4</div>
-</a>
-</div>
-
+<!-- תוסיף עוד אם בא לך -->
 </div>
 
 <script>
-const sections = document.querySelectorAll('.section');
-let active = null;
-let soundOn = false;
+const sections=document.querySelectorAll('.section');
+let active=null;
+let soundOn=false;
 
 function muteAll(){
-  sections.forEach(sec=>{
-    const iframe = sec.querySelector("iframe");
-    iframe.contentWindow.postMessage(JSON.stringify({
-      event:"command",
-      func:"mute"
-    }),"*");
-
-    iframe.contentWindow.postMessage({method:"setVolume",value:0},"*");
-  });
+sections.forEach(sec=>{
+const iframe=sec.querySelector("iframe");
+iframe.contentWindow.postMessage(JSON.stringify({event:"command",func:"mute"}),"*");
+iframe.contentWindow.postMessage({method:"setVolume",value:0},"*");
+});
 }
 
 function unmute(sec){
-  const iframe = sec.querySelector("iframe");
-
-  iframe.contentWindow.postMessage(JSON.stringify({
-    event:"command",
-    func:"unMute"
-  }),"*");
-
-  iframe.contentWindow.postMessage({method:"setVolume",value:1},"*");
+const iframe=sec.querySelector("iframe");
+iframe.contentWindow.postMessage(JSON.stringify({event:"command",func:"unMute"}),"*");
+iframe.contentWindow.postMessage({method:"setVolume",value:1},"*");
 }
 
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      active = entry.target;
-
-      muteAll();
-
-      if(soundOn){
-        unmute(active);
-      }
-    }
-  });
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+active=entry.target;
+muteAll();
+if(soundOn)unmute(active);
+}
+});
 },{threshold:0.6});
 
 sections.forEach(sec=>observer.observe(sec));
 
-document.getElementById("soundToggle").onclick=()=>{
-  soundOn = !soundOn;
-
-  if(soundOn){
-    unmute(active);
-    soundToggle.innerText="Sound on";
-  }else{
-    muteAll();
-    soundToggle.innerText="Enable sound";
-  }
+soundToggle.onclick=()=>{
+soundOn=!soundOn;
+if(soundOn){unmute(active);soundToggle.innerText="Sound on";}
+else{muteAll();soundToggle.innerText="Enable sound";}
 };
 </script>
 
