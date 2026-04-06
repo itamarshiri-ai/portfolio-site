@@ -75,11 +75,9 @@ body{
 }
 
 /* MOBILE */
-
 .mobile{display:none;}
 
 @media(max-width:768px){
-
   body{scroll-snap-type:none;}
   .section{display:none;}
 
@@ -127,16 +125,19 @@ body{
 
 <button class="sound-toggle" id="soundToggle">Enable sound</button>
 
-<!-- HERO -->
-<section class="section" data-platform="youtube">
-  <div class="overlay">
-    <div class="name">ITAMAR LIDER SHIRI</div>
-    <div class="title">Director · Creative · Art Direction</div>
-  </div>
-  <iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&enablejsapi=1"></iframe>
-  <div class="section-title">SEXIT — Eden Golan</div>
+<!-- 1. HAYLI -->
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1137607265?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Hayli — Anna Zak</div>
 </section>
 
+<!-- 2. GRAVITE -->
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1129099945?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Gravite</div>
+</section>
+
+<!-- 3–11 ADS -->
 <section class="section" data-platform="vimeo">
 <iframe src="https://player.vimeo.com/video/1104863532?autoplay=1&muted=1&loop=1&background=1"></iframe>
 <div class="section-title">Zeta</div>
@@ -158,8 +159,8 @@ body{
 </section>
 
 <section class="section" data-platform="youtube">
-<iframe src="https://www.youtube.com/embed/wm9Gg1y5vhM?autoplay=1&mute=1&loop=1&playlist=wm9Gg1y5vhM&controls=0&enablejsapi=1"></iframe>
-<div class="section-title">Pantene — Winner Golden Cactus 2025</div>
+<iframe src="https://www.youtube.com/embed/jsb-NIul4rI?autoplay=1&mute=1&loop=1&playlist=jsb-NIul4rI&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Ariel Lenor</div>
 </section>
 
 <section class="section" data-platform="vimeo">
@@ -178,8 +179,14 @@ body{
 </section>
 
 <section class="section" data-platform="youtube">
-<iframe src="https://www.youtube.com/embed/jsb-NIul4rI?autoplay=1&mute=1&loop=1&playlist=jsb-NIul4rI&controls=0&enablejsapi=1"></iframe>
-<div class="section-title">Ariel Lenor</div>
+<iframe src="https://www.youtube.com/embed/wm9Gg1y5vhM?autoplay=1&mute=1&loop=1&playlist=wm9Gg1y5vhM&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Pantene — Winner Golden Cactus 2025</div>
+</section>
+
+<!-- CLIPS -->
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">SEXIT — Eden Golan</div>
 </section>
 
 <section class="section" data-platform="youtube">
@@ -196,31 +203,6 @@ body{
 <iframe src="https://www.youtube.com/embed/LtY23Aq1mTI?autoplay=1&mute=1&loop=1&playlist=LtY23Aq1mTI&controls=0&enablejsapi=1"></iframe>
 <div class="section-title">Go To Sleep</div>
 </section>
-
-<!-- ✅ HAYLI FIXED -->
-<section class="section" data-platform="vimeo">
-<iframe src="https://player.vimeo.com/video/1137607265?autoplay=1&muted=1&loop=1&background=1"></iframe>
-<div class="section-title">Hayli — Anna Zak</div>
-</section>
-
-<section class="section" data-platform="vimeo">
-<iframe src="https://player.vimeo.com/video/1129099945?autoplay=1&muted=1&loop=1&background=1"></iframe>
-<div class="section-title">Gravite</div>
-</section>
-
-<!-- MOBILE -->
-<div class="mobile">
-<div class="mobile-name">ITAMAR LIDER SHIRI</div>
-<div class="mobile-title">Director · Creative · Art Direction</div>
-
-<div class="card">
-<a href="https://vimeo.com/1137607265" target="_blank">
-<div class="thumb"><img src="https://vumbnail.com/1137607265.jpg"></div>
-<div class="card-title">Hayli — Anna Zak</div>
-</a>
-</div>
-
-</div>
 
 <script>
 const sections=document.querySelectorAll('.section');
