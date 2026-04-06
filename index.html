@@ -154,7 +154,36 @@ body::before{
   opacity:.045;
   background-image:url('https://grainy-gradients.vercel.app/noise.svg');
 }
+@media (max-width: 768px){
 
+  .overlay{
+    top:20px;
+    left:20px;
+    gap:10px;
+  }
+
+  .name{
+    font-size:28px;
+    letter-spacing:0.04em;
+  }
+
+  .title{
+    font-size:10px;
+    letter-spacing:0.18em;
+  }
+
+  .section-title{
+    font-size:10px;
+    left:20px;
+    bottom:20px;
+    letter-spacing:0.18em;
+  }
+
+  body{
+    scroll-snap-type:y proximity;
+  }
+
+}
 </style>
   
 </head>
