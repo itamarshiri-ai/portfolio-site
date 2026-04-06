@@ -1,497 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Itamar Lider Shiri</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itamar Lider Shiri</title>
 
-  <style>
-    :root{
-      --bg:#0b0b0b;
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
-      --line:rgba(255,255,255,.22);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    *{
-      box-sizing:border-box;
-    }
+<style>
+body{
+  margin:0;
+  background:#0b0b0b;
+  color:white;
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+  scroll-snap-type:y mandatory;
+}
 
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:Inter,sans-serif;
-      overflow-x:hidden;
-      scroll-snap-type:y mandatory;
-    }
+.section{
+  height:100vh;
+  position:relative;
+  scroll-snap-align:start;
+  overflow:hidden;
+}
 
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:5;
-      opacity:.045;
-      background-image:url("https://grainy-gradients.vercel.app/noise.svg");
-    }
+.section iframe{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border:0;
+}
 
-    .desktop{
-      display:block;
-    }
+.overlay{
+  position:absolute;
+  top:40px;
+  left:40px;
+  z-index:2;
+}
 
-    .section{
-      height:100vh;
-      position:relative;
-      scroll-snap-align:start;
-      scroll-snap-stop:always;
-      overflow:hidden;
-    }
+.name{
+  font-size:46px;
+  font-weight:700;
+}
 
-    .section iframe{
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
-    }
+.title{
+  font-size:11px;
+  letter-spacing:.2em;
+  opacity:.7;
+}
 
-    .section::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        180deg,
-        rgba(0,0,0,.35) 0%,
-        rgba(0,0,0,.12) 30%,
-        rgba(0,0,0,.18) 70%,
-        rgba(0,0,0,.45) 100%
-      );
-      pointer-events:none;
-      z-index:1;
-    }
+.section-title{
+  position:absolute;
+  bottom:40px;
+  left:40px;
+  font-size:11px;
+  letter-spacing:.25em;
+  opacity:.7;
+  z-index:2;
+}
 
-    .overlay{
-      position:absolute;
-      top:40px;
-      left:40px;
-      z-index:2;
-    }
+.sound-toggle{
+  position:fixed;
+  bottom:30px;
+  right:30px;
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(0,0,0,0.4);
+  backdrop-filter:blur(10px);
+  font-size:11px;
+  letter-spacing:.15em;
+  cursor:pointer;
+  z-index:10;
+}
 
-    .name{
-      font-size:46px;
-      font-weight:700;
-      letter-spacing:.045em;
-      line-height:.94;
-    }
+/* MOBILE */
 
-    .title{
-      margin-top:8px;
-      font-size:11px;
-      letter-spacing:.2em;
-      opacity:.72;
-      text-transform:uppercase;
-    }
+.mobile{display:none;}
 
-    .section-title{
-      position:absolute;
-      bottom:40px;
-      left:40px;
-      z-index:2;
-      font-size:11px;
-      letter-spacing:.25em;
-      opacity:.7;
-      text-transform:uppercase;
-    }
+@media(max-width:768px){
 
-    .sound-toggle{
-      position:fixed;
-      right:30px;
-      bottom:30px;
-      z-index:10;
-      min-height:42px;
-      padding:0 18px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.2);
-      background:rgba(0,0,0,.4);
-      backdrop-filter:blur(10px);
-      color:#fff;
-      font-family:Inter,sans-serif;
-      font-size:11px;
-      letter-spacing:.15em;
-      text-transform:uppercase;
-      cursor:pointer;
-    }
+  body{scroll-snap-type:none;}
+  .section{display:none;}
 
-    .mobile{
-      display:none;
-    }
+  .mobile{
+    display:block;
+    padding:100px 20px;
+  }
 
-    @media (max-width:768px){
-      body{
-        scroll-snap-type:none;
-      }
+  .mobile-name{
+    font-size:28px;
+    font-weight:700;
+  }
 
-      .desktop{
-        display:none;
-      }
+  .mobile-title{
+    font-size:10px;
+    letter-spacing:.15em;
+    opacity:.7;
+    margin-bottom:30px;
+  }
 
-      .mobile{
-        display:block;
-        padding:100px 20px 80px;
-      }
+  .card{margin-bottom:28px;}
 
-      .mobile-name{
-        font-size:28px;
-        font-weight:700;
-        line-height:.96;
-        letter-spacing:.04em;
-      }
+  .thumb{
+    aspect-ratio:16/9;
+    border-radius:18px;
+    overflow:hidden;
+  }
 
-      .mobile-title{
-        margin-top:10px;
-        margin-bottom:30px;
-        font-size:10px;
-        letter-spacing:.15em;
-        opacity:.72;
-        text-transform:uppercase;
-      }
+  .thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
 
-      .card{
-        margin-bottom:28px;
-      }
-
-      .card a{
-        color:inherit;
-        text-decoration:none;
-      }
-
-      .thumb{
-        aspect-ratio:16/9;
-        border-radius:18px;
-        overflow:hidden;
-        background:#111;
-      }
-
-      .thumb img{
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        display:block;
-      }
-
-      .card-title{
-        margin-top:10px;
-        font-size:11px;
-        letter-spacing:.18em;
-        opacity:.85;
-        text-transform:uppercase;
-      }
-
-      .mobile-contact{
-        padding-top:24px;
-      }
-
-      .contact-links{
-        display:flex;
-        gap:16px;
-        flex-wrap:wrap;
-        margin-top:14px;
-      }
-
-      .contact-link{
-        color:rgba(255,255,255,.85);
-        text-decoration:none;
-        font-size:11px;
-        letter-spacing:.18em;
-        text-transform:uppercase;
-      }
-    }
-  </style>
+  .card-title{
+    margin-top:10px;
+    font-size:11px;
+    letter-spacing:.2em;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <button class="sound-toggle" id="soundToggle" type="button">Enable sound</button>
+<button class="sound-toggle" id="soundToggle">Enable sound</button>
 
-  <div class="desktop">
-    <section class="section" data-platform="youtube">
-      <div class="overlay">
-        <div class="name">ITAMAR LIDER SHIRI</div>
-        <div class="title">Director · Creative · Art Direction</div>
-      </div>
-      <iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&modestbranding=1&rel=0&enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media"></iframe>
-      <div class="section-title">SEXIT — Eden Golan</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1104863532?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Zeta — Commercial</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1085404023?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Pelephone</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1099614957?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Nestlé Crunch</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1052975419?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">PayBox</div>
-    </section>
-
-    <section class="section" data-platform="youtube">
-      <iframe src="https://www.youtube.com/embed/wm9Gg1y5vhM?autoplay=1&mute=1&loop=1&playlist=wm9Gg1y5vhM&controls=0&modestbranding=1&rel=0&enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media"></iframe>
-      <div class="section-title">Pantene — Winner Golden Cactus 2025</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/930153765?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">American Express</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1068760858?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Tami 4</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/963125446?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Osem — Mana Hama</div>
-    </section>
-
-    <section class="section" data-platform="youtube">
-      <iframe src="https://www.youtube.com/embed/jsb-NIul4rI?autoplay=1&mute=1&loop=1&playlist=jsb-NIul4rI&controls=0&modestbranding=1&rel=0&enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media"></iframe>
-      <div class="section-title">Ariel Lenor</div>
-    </section>
-
-    <section class="section" data-platform="youtube">
-      <iframe src="https://www.youtube.com/embed/bcuRKDY0Rz0?autoplay=1&mute=1&loop=1&playlist=bcuRKDY0Rz0&controls=0&modestbranding=1&rel=0&enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media"></iframe>
-      <div class="section-title">Mi Zot — Anna Zak</div>
-    </section>
-
-    <section class="section" data-platform="youtube">
-      <iframe src="https://www.youtube.com/embed/z7jvfjqtd90?autoplay=1&mute=1&loop=1&playlist=z7jvfjqtd90&controls=0&modestbranding=1&rel=0&enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media"></iframe>
-      <div class="section-title">Allstar — Anna Zak</div>
-    </section>
-
-    <section class="section" data-platform="youtube">
-      <iframe src="https://www.youtube.com/embed/LtY23Aq1mTI?autoplay=1&mute=1&loop=1&playlist=LtY23Aq1mTI&controls=0&modestbranding=1&rel=0&enablejsapi=1&playsinline=1" allow="autoplay; encrypted-media"></iframe>
-      <div class="section-title">Go To Sleep</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1010787280?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Hayli — Anna Zak</div>
-    </section>
-
-    <section class="section" data-platform="vimeo">
-      <iframe src="https://player.vimeo.com/video/1129099945?autoplay=1&muted=1&loop=1&background=1" allow="autoplay; fullscreen; picture-in-picture"></iframe>
-      <div class="section-title">Gravite</div>
-    </section>
-
-    <section class="section">
-      <div class="overlay">
-        <div class="name">ITAMAR LIDER SHIRI</div>
-        <div class="title">Director · Creative · Art Direction</div>
-      </div>
-      <div class="section-title">Mail — itamarshiri@gmail.com · Instagram — @itamarlidershiri</div>
-    </section>
+<!-- HERO -->
+<section class="section" data-platform="youtube">
+  <div class="overlay">
+    <div class="name">ITAMAR LIDER SHIRI</div>
+    <div class="title">Director · Creative · Art Direction</div>
   </div>
+  <iframe src="https://www.youtube.com/embed/CcpYvKZ5j7s?autoplay=1&mute=1&loop=1&playlist=CcpYvKZ5j7s&controls=0&enablejsapi=1"></iframe>
+  <div class="section-title">SEXIT — Eden Golan</div>
+</section>
 
-  <div class="mobile">
-    <div class="mobile-name">ITAMAR LIDER SHIRI</div>
-    <div class="mobile-title">Director · Creative · Art Direction</div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1104863532?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Zeta</div>
+</section>
 
-    <div class="card">
-      <a href="https://www.youtube.com/watch?v=CcpYvKZ5j7s" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://img.youtube.com/vi/CcpYvKZ5j7s/maxresdefault.jpg" alt="SEXIT — Eden Golan"></div>
-        <div class="card-title">SEXIT — Eden Golan</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1085404023?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Pelephone</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/1104863532" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1104863532.jpg" alt="Zeta — Commercial"></div>
-        <div class="card-title">Zeta — Commercial</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1099614957?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Nestlé Crunch</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/1085404023" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1085404023.jpg" alt="Pelephone"></div>
-        <div class="card-title">Pelephone</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1052975419?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">PayBox</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/1099614957" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1099614957.jpg" alt="Nestlé Crunch"></div>
-        <div class="card-title">Nestlé Crunch</div>
-      </a>
-    </div>
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/wm9Gg1y5vhM?autoplay=1&mute=1&loop=1&playlist=wm9Gg1y5vhM&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Pantene — Winner Golden Cactus 2025</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/1052975419" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1052975419.jpg" alt="PayBox"></div>
-        <div class="card-title">PayBox</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/930153765?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">American Express</div>
+</section>
 
-    <div class="card">
-      <a href="https://www.youtube.com/watch?v=wm9Gg1y5vhM" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://img.youtube.com/vi/wm9Gg1y5vhM/maxresdefault.jpg" alt="Pantene"></div>
-        <div class="card-title">Pantene — Winner Golden Cactus 2025</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1068760858?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Tami 4</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/930153765" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/930153765.jpg" alt="American Express"></div>
-        <div class="card-title">American Express</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/963125446?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Osem — Mana Hama</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/1068760858" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1068760858.jpg" alt="Tami 4"></div>
-        <div class="card-title">Tami 4</div>
-      </a>
-    </div>
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/jsb-NIul4rI?autoplay=1&mute=1&loop=1&playlist=jsb-NIul4rI&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Ariel Lenor</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/963125446" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/963125446.jpg" alt="Osem — Mana Hama"></div>
-        <div class="card-title">Osem — Mana Hama</div>
-      </a>
-    </div>
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/bcuRKDY0Rz0?autoplay=1&mute=1&loop=1&playlist=bcuRKDY0Rz0&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Mi Zot — Anna Zak</div>
+</section>
 
-    <div class="card">
-      <a href="https://www.youtube.com/watch?v=jsb-NIul4rI" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://img.youtube.com/vi/jsb-NIul4rI/maxresdefault.jpg" alt="Ariel Lenor"></div>
-        <div class="card-title">Ariel Lenor</div>
-      </a>
-    </div>
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/z7jvfjqtd90?autoplay=1&mute=1&loop=1&playlist=z7jvfjqtd90&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Allstar — Anna Zak</div>
+</section>
 
-    <div class="card">
-      <a href="https://www.youtube.com/watch?v=bcuRKDY0Rz0" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://img.youtube.com/vi/bcuRKDY0Rz0/maxresdefault.jpg" alt="Mi Zot — Anna Zak"></div>
-        <div class="card-title">Mi Zot — Anna Zak</div>
-      </a>
-    </div>
+<section class="section" data-platform="youtube">
+<iframe src="https://www.youtube.com/embed/LtY23Aq1mTI?autoplay=1&mute=1&loop=1&playlist=LtY23Aq1mTI&controls=0&enablejsapi=1"></iframe>
+<div class="section-title">Go To Sleep</div>
+</section>
 
-    <div class="card">
-      <a href="https://www.youtube.com/watch?v=z7jvfjqtd90" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://img.youtube.com/vi/z7jvfjqtd90/maxresdefault.jpg" alt="Allstar — Anna Zak"></div>
-        <div class="card-title">Allstar — Anna Zak</div>
-      </a>
-    </div>
+<!-- ✅ HAYLI FIXED -->
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1137607265?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Hayli — Anna Zak</div>
+</section>
 
-    <div class="card">
-      <a href="https://www.youtube.com/watch?v=LtY23Aq1mTI" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://img.youtube.com/vi/LtY23Aq1mTI/maxresdefault.jpg" alt="Go To Sleep"></div>
-        <div class="card-title">Go To Sleep</div>
-      </a>
-    </div>
+<section class="section" data-platform="vimeo">
+<iframe src="https://player.vimeo.com/video/1129099945?autoplay=1&muted=1&loop=1&background=1"></iframe>
+<div class="section-title">Gravite</div>
+</section>
 
-    <div class="card">
-      <a href="https://vimeo.com/1010787280" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1010787280.jpg" alt="Hayli — Anna Zak"></div>
-        <div class="card-title">Hayli — Anna Zak</div>
-      </a>
-    </div>
+<!-- MOBILE -->
+<div class="mobile">
+<div class="mobile-name">ITAMAR LIDER SHIRI</div>
+<div class="mobile-title">Director · Creative · Art Direction</div>
 
-    <div class="card">
-      <a href="https://vimeo.com/1129099945" target="_blank" rel="noreferrer">
-        <div class="thumb"><img src="https://vumbnail.com/1129099945.jpg" alt="Gravite"></div>
-        <div class="card-title">Gravite</div>
-      </a>
-    </div>
+<div class="card">
+<a href="https://vimeo.com/1137607265" target="_blank">
+<div class="thumb"><img src="https://vumbnail.com/1137607265.jpg"></div>
+<div class="card-title">Hayli — Anna Zak</div>
+</a>
+</div>
 
-    <div class="mobile-contact">
-      <div class="contact-links">
-        <a class="contact-link" href="mailto:itamarshiri@gmail.com">Mail —</a>
-        <a class="contact-link" href="https://www.instagram.com/itamarlidershiri/" target="_blank" rel="noreferrer">Instagram —</a>
-      </div>
-    </div>
-  </div>
+</div>
 
-  <script>
-    const sections = document.querySelectorAll('.desktop .section[data-platform]');
-    const soundToggle = document.getElementById('soundToggle');
-    let active = null;
-    let soundOn = false;
+<script>
+const sections=document.querySelectorAll('.section');
+let active=null;
+let soundOn=false;
 
-    function ytPost(iframe, func, args = []) {
-      iframe.contentWindow?.postMessage(JSON.stringify({
-        event: "command",
-        func,
-        args
-      }), "*");
-    }
+function muteAll(){
+sections.forEach(sec=>{
+const iframe=sec.querySelector("iframe");
+iframe.contentWindow.postMessage(JSON.stringify({event:"command",func:"mute"}),"*");
+iframe.contentWindow.postMessage({method:"setVolume",value:0},"*");
+});
+}
 
-    function vimeoPost(iframe, method, value) {
-      iframe.contentWindow?.postMessage({ method, value }, "*");
-    }
+function unmute(sec){
+const iframe=sec.querySelector("iframe");
+iframe.contentWindow.postMessage(JSON.stringify({event:"command",func:"unMute"}),"*");
+iframe.contentWindow.postMessage({method:"setVolume",value:1},"*");
+}
 
-    function muteAll() {
-      sections.forEach(sec => {
-        const iframe = sec.querySelector("iframe");
-        if (!iframe) return;
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+active=entry.target;
+muteAll();
+if(soundOn)unmute(active);
+}
+});
+},{threshold:0.6});
 
-        if (sec.dataset.platform === "youtube") {
-          ytPost(iframe, "mute");
-          ytPost(iframe, "playVideo");
-        } else {
-          vimeoPost(iframe, "setVolume", 0);
-          vimeoPost(iframe, "play");
-        }
-      });
-    }
+sections.forEach(sec=>observer.observe(sec));
 
-    function unmute(sec) {
-      const iframe = sec?.querySelector("iframe");
-      if (!iframe) return;
+soundToggle.onclick=()=>{
+soundOn=!soundOn;
+if(soundOn){unmute(active);soundToggle.innerText="Sound on";}
+else{muteAll();soundToggle.innerText="Enable sound";}
+};
+</script>
 
-      if (sec.dataset.platform === "youtube") {
-        ytPost(iframe, "playVideo");
-        ytPost(iframe, "unMute");
-        ytPost(iframe, "setVolume", [100]);
-      } else {
-        vimeoPost(iframe, "play");
-        vimeoPost(iframe, "setVolume", 1);
-      }
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(entry => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-      if (visible.length) {
-        active = visible[0].target;
-        muteAll();
-        if (soundOn) unmute(active);
-      }
-    }, { threshold: [0.45, 0.6, 0.75] });
-
-    sections.forEach(sec => observer.observe(sec));
-
-    soundToggle?.addEventListener("click", () => {
-      soundOn = !soundOn;
-
-      if (soundOn) {
-        if (active) unmute(active);
-        soundToggle.innerText = "Sound on";
-      } else {
-        muteAll();
-        soundToggle.innerText = "Enable sound";
-      }
-    });
-  </script>
 </body>
 </html>
