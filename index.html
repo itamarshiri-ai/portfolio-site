@@ -19,6 +19,7 @@ body{
   position:relative;
   scroll-snap-align:start;
   scroll-snap-stop:always;
+  overflow:hidden;
 }
 .section iframe{
   position:absolute;
@@ -144,6 +145,7 @@ body{
     top:20px;
     left:20px;
     gap:10px;
+    max-width:calc(100vw - 40px);
   }
 
   .name{
@@ -168,13 +170,17 @@ body{
   }
 
   .section iframe{
+    position:absolute;
     top:50%;
     left:50%;
     width:177.78vh;
     height:100vh;
+    min-width:100vw;
+    min-height:56.25vw;
     transform:translate(-50%, -50%);
   }
 }
+
 
   .section-title{left:24px;bottom:24px}
   .name{font-size:32px;letter-spacing:.04em}
